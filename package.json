@@ -1,0 +1,46 @@
+{
+  "name": "aspen",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "npm run watchify & npm run sasswatch & nodemon ./back/app.js",
+    "test": "eslint ./back/app.js && eslint ./front/scripts/app.js && mocha -b ./test/index.js",
+    "browserify": "browserify front/scripts/app.js -o front/static/script.js",
+    "watchify": "watchify front/scripts/app.js -v --poll 100ms -o ./front/static/script.js",
+    "sass": "node-sass --include-path scss ./front/styles/boot.scss ./front/static/style.css",
+    "sasswatch": "nodemon -e scss -x \"npm run sass\"",
+    "build": "npm run browserify && npm run sass",
+    "deploy": "npm run build && node ./back/app.js"
+  },
+  "engines": {
+    "node": "4.x",
+    "npm": ">=3.3.x"
+  },
+  "dependencies": {
+    "bcrypt": "0.8.7",
+    "bluebird": "3.4.1",
+    "body-parser": "1.15.2",
+    "browserify": "13.0.1",
+    "config": "1.21.0",
+    "cookie-parser": "1.4.3",
+    "debug": "2.2.0",
+    "express": "4.14.0",
+    "express-session": "1.14.0",
+    "morgan": "1.7.0",
+    "node-sass": "3.8.0",
+    "passport": "0.3.2",
+    "passport-local": "1.0.0",
+    "pg": "6.0.1",
+    "pg-hstore": "2.3.2",
+    "pug": "2.0.0-beta3",
+    "sequelize": "3.23.4",
+    "serve-favicon": "2.3.0"
+  },
+  "devDependencies": {
+    "chai": "3.5.0",
+    "eslint": "3.0.0",
+    "mocha": "2.5.3",
+    "nodemon": "1.9.2",
+    "request": "2.72.0"
+  }
+}
