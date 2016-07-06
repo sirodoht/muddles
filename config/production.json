@@ -1,0 +1,10 @@
+{
+  "postgres":{
+    "username": "postgres",
+    "password": "8d38d31570aa40e9795f3df17a75b5f0",
+    "database": "muddles",
+    "host": "dokku-postgres-muddles",
+    "dialect": "postgres",
+    "port": "5432"
+  }
+}
