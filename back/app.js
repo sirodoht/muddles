@@ -48,7 +48,7 @@ app.use(passport.session());
 passport.use(new GitHubStrategy({
     clientID: 'd87530f855c18573e868',
     clientSecret: '16136b982bbd0d619d906ee23b8c81e516f093ad',
-    callbackURL: "http://127.0.0.1:3000/auth/github/callback"
+    callbackURL: "http://muddles.nepenth.xyz/auth/github/callback"
   },
   function(accessToken, refreshToken, profile, cb) {
     console.log('profile.id', profile.id);
