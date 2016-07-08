@@ -1,9 +1,9 @@
 {
   "postgres":{
     "url": "postgres://sirodoht@127.0.0.1:5432/muddles",
-    "username": "aspen",
+    "username": "sirodoht",
     "password": null,
-    "database": "aspen",
+    "database": "muddles",
     "host": "127.0.0.1",
     "dialect": "postgres",
     "port": "5432"
