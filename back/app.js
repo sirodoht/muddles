@@ -51,18 +51,20 @@ passport.use(new GitHubStrategy({
   callbackURL: 'http://muddles.nepenth.xyz/auth/github/callback',
 },
   function(accessToken, refreshToken, profile, cb) {
-    console.log('profile.id', profile.id);
-    console.log('profile', profile);
     models.User.findOrCreate({
       where: { githubId: profile.id },
     })
       .then(function (user) {
-        console.log('here 1');
         cb(null, profile);
-        // return new Promise(function (resolve) {
-        //   cb(user);
-        //   resolve();
-        // });
+        return user;
+      })
+      .then(function (user) {
+        return models.User.update(user, {
+          avatar: profile.avatar_url,
+        });
+      })
+      .then(function (user) {
+        console.log('user:', user);
       });
   }
 ));
