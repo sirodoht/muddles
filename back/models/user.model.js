@@ -1,21 +1,15 @@
-module.exports = function(sequelize, DataTypes) {
+module.exports = function (sequelize, DataTypes) {
   const attributes = {
-    'id': {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      primaryKey: true,
-      autoIncrement: true,
-    },
-    'githubId': DataTypes.STRING,
-    'email': {
+    githubId: DataTypes.STRING,
+    email: {
       type: DataTypes.STRING,
       validate: {
         isEmail: true,
       },
     },
 
-    'lastLogin': DataTypes.DATE,
-    'lastIp': {
+    lastLogin: DataTypes.DATE,
+    lastIp: {
       type: DataTypes.STRING,
       validate: {
         isIP: true,
@@ -25,7 +19,7 @@ module.exports = function(sequelize, DataTypes) {
 
   const options = {};
   options.classMethods = {
-    associate: function(models) {
+    associate: function (models) {
       User.hasMany(models.Failure);
     }
   };
