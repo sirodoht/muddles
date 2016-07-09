@@ -62,10 +62,12 @@ passport.use(new GitHubStrategy({
 ));
 
 passport.serializeUser(function (user, done) {
+  console.log('ser: user', user);
   done(null, user.githubId);
 });
 
 passport.deserializeUser(function (githubId, done) {
+  console.log('de-ser: githubId', githubId);
   models.User.findOne({
     where: {
       githubId
