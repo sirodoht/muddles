@@ -6,4 +6,19 @@ block content
       .col-md-12
         .jumbotron
           h1 #{title}
-          p.lead Yet another Node.js boilerplate.
+          p.lead Things that suck.
+        .new
+          form(method="POST", action="/new")
+            .form-group
+              label(for="title") Title
+              input#title.form-control(type="text")
+            .form-group
+              label(for="symptoms") Symptoms
+              input#symptoms.form-control(type="text")
+            .form-group
+              label(for="hotfix") Hotfix
+              input#hotfix.form-control(type="text")
+            .form-group
+              label(for="description") Description
+              input#description.form-control(type="text")
+            button.btn.btn-default(type="submit") Submit
