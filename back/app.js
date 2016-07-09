@@ -52,7 +52,9 @@ passport.use(new GitHubStrategy({
   function(accessToken, refreshToken, profile, cb) {
     console.log('profile.id', profile.id);
     console.log('profile', profile);
-    models.User.findOrCreate({ githubId: profile.id })
+    models.User.findOrCreate({
+      where: { githubId: profile.id },
+    })
       .then(function (err, user) {
         return cb(err, user);
       });
