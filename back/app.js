@@ -58,8 +58,10 @@ passport.use(new GitHubStrategy({
         cb(null, profile);
         return user;
       })
-      .then(function (user) {
-        return models.User.update(user, {
+      .then(function () {
+        return models.User.update({
+          where: { githubId: profile.id },
+        }, {
           avatar: profile.avatar_url,
         });
       })
