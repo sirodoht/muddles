@@ -5,7 +5,7 @@ const failureCtrl = module.exports = {};
 failureCtrl.new = function (req, res) {
   models.Failure.create(req.body)
     .then(function () {
-      res.redirect('/list');
+      res.redirect('/readAll');
     });
 };
 
