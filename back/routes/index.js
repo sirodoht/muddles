@@ -24,7 +24,8 @@ router.post('/login', userCtrl.login);
 
 router.post('/new', failureCtrl.new);
 
-router.get('/list', failureCtrl.list);
+router.get('/readAll', failureCtrl.list);
+router.get('/readOne/:failureId', failureCtrl.read);
 
 router.get('/register', userCtrl.getRegister);
 
