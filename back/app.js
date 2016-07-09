@@ -55,11 +55,8 @@ passport.use(new GitHubStrategy({
     models.User.findOrCreate({
       where: { githubId: profile.id },
     })
-      .then(function (err, user) {
-        console.log('err', err);
-        console.log('user', user);
-        // return cb(err, user);
-        return cb(user, err);
+      .then(function (user) {
+        return cb(user);
       });
   }
 ));
