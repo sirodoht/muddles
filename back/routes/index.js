@@ -4,6 +4,7 @@ const passport = require('passport');
 
 const indexCtrl = require('../controllers/index.ctrl');
 const userCtrl = require('../controllers/user.ctrl');
+const failureCtrl = require('../controllers/failure.ctrl');
 
 router.get('/', indexCtrl.getIndex);
 router.get('/login', userCtrl.getLogin);
@@ -21,6 +22,9 @@ router.get('/auth/github/callback',
 router.post('/register', userCtrl.register);
 router.post('/login', userCtrl.login);
 
+router.post('/new', failureCtrl.new);
+
+router.get('/list', failureCtrl.list);
 
 router.get('/register', userCtrl.getRegister);
 
