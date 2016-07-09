@@ -1,12 +1,12 @@
+const os = require('os');
+const path = require('path');
 const express = require('express');
 const logger = require('morgan');
-const path = require('path');
 const favicon = require('serve-favicon');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const passport = require('passport');
-// const LocalStrategy = require('passport-local').Strategy;
 const GitHubStrategy = require('passport-github').Strategy;
 
 const routes = require('./routes/index');
@@ -44,47 +44,20 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-
 passport.use(new GitHubStrategy({
-    clientID: 'd87530f855c18573e868',
-    clientSecret: '16136b982bbd0d619d906ee23b8c81e516f093ad',
-    callbackURL: "http://muddles.nepenth.xyz/auth/github/callback"
-  },
+  clientID: 'd87530f855c18573e868',
+  clientSecret: '16136b982bbd0d619d906ee23b8c81e516f093ad',
+  callbackURL: 'http://muddles.nepenth.xyz/auth/github/callback',
+},
   function(accessToken, refreshToken, profile, cb) {
     console.log('profile.id', profile.id);
     console.log('profile', profile);
-    // models.User.findOrCreate({ githubId: profile.id }, function (err, user) {
-    //   return cb(err, user);
-    // });
+    models.User.findOrCreate({ githubId: profile.id })
+      .then(function (err, user) {
+        return cb(err, user);
+      });
   }
 ));
-
-// passport.use(new LocalStrategy({
-//   usernameField: 'username',
-//   passwordField: 'password',
-//     // session: false,
-// }, function (username, password, done) {
-//   models.User.findOne({
-//     where: {
-//       username: username
-//     }
-//   }).then(function (user) {
-//     if (!user) {
-//       return done(null, false, {
-//         message: 'Incorrect username.'
-//       });
-//     }
-//     if (!user.validPassword(password)) {
-//       return done(null, false, {
-//         message: 'Incorrect password.'
-//       });
-//     }
-//     return done(null, user);
-//   }).catch(function (err) {
-//     console.log('Passport error:', err);
-//   });
-// }
-// ));
 
 passport.serializeUser(function (user, done) {
   done(null, user.username);
@@ -139,7 +112,7 @@ models.sequelize.sync()
     app.listen(port);
     app.on('error', listeners.onError);
     app.on('listening', listeners.onListening);
-    console.log('Server running on port ' + port);
+    console.log('Server running on http://' + os.hostname() + ':' + port);
   });
 
 module.exports = app;
