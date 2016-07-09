@@ -62,13 +62,13 @@ passport.use(new GitHubStrategy({
 ));
 
 passport.serializeUser(function (user, done) {
-  done(null, user.username);
+  done(null, user.githubId);
 });
 
-passport.deserializeUser(function (username, done) {
+passport.deserializeUser(function (githubId, done) {
   models.User.findOne({
     where: {
-      username
+      githubId
     }
   }).then(function (user) {
     done(null, user);
