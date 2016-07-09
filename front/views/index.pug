@@ -11,14 +11,14 @@ block content
           form(method="POST", action="/new")
             .form-group
               label(for="title") Title
-              input#title.form-control(type="text")
+              input#title.form-control(type="text", name="title")
             .form-group
               label(for="symptoms") Symptoms
-              input#symptoms.form-control(type="text")
+              input#symptoms.form-control(type="text", name="symptoms")
             .form-group
               label(for="hotfix") Hotfix
-              input#hotfix.form-control(type="text")
+              input#hotfix.form-control(type="text", name="hotfix")
             .form-group
               label(for="description") Description
-              input#description.form-control(type="text")
+              input#description.form-control(type="text", name="description")
             button.btn.btn-default(type="submit") Submit
