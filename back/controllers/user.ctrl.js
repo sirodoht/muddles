@@ -7,21 +7,30 @@ const userCtrl = module.exports = {};
 userCtrl.getUser = function (req, res) {
   const userParam = req.params.user;
 
-  models.User.findOne({
-    where: {
-      username: userParam,
-    }
-  }).then(function (user) {
-    if (user !== null) {
-      res.render('user', {
-        email: user.dataValues.email,
-        name: user.dataValues.name,
-        username: user.dataValues.username,
-      });
-    } else {
-      res.sendStatus(404);
-    }
-  });
+  models.User.findOrCreate({
+    where: { githubId: userParam },
+  })
+    .then(function (err, user) {
+      res.sendStatus(200);
+      console.log('user', user);
+      // return cb(err, user);
+    });
+
+  // models.User.findOne({
+  //   where: {
+  //     username: userParam,
+  //   }
+  // }).then(function (user) {
+  //   if (user !== null) {
+  //     res.render('user', {
+  //       email: user.dataValues.email,
+  //       name: user.dataValues.name,
+  //       username: user.dataValues.username,
+  //     });
+  //   } else {
+  //     res.sendStatus(404);
+  //   }
+  // });
 };
 
 userCtrl.getRegister = function (req, res) {
