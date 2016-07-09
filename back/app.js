@@ -53,16 +53,17 @@ passport.use(new GitHubStrategy({
   function(accessToken, refreshToken, profile, cb) {
     console.log('profile.id', profile.id);
     console.log('profile', profile);
-    models.User.findOrCreate({
-      where: { githubId: profile.id },
-    })
-      .then(function (user) {
-        console.log('here 1');
-        return new Promise(function (resolve) {
-          cb(user);
-          resolve();
-        });
-      });
+    cb(null, profile);
+    // models.User.findOrCreate({
+    //   where: { githubId: profile.id },
+    // })
+    //   .then(function (user) {
+    //     console.log('here 1');
+    //     return new Promise(function (resolve) {
+    //       cb(user);
+    //       resolve();
+    //     });
+    //   });
   }
 ));
 
