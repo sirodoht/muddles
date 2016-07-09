@@ -109,7 +109,7 @@ app.use(function (err, req, res) {
 const port = helpers.normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
-models.sequelize.sync()
+models.sequelize.sync({force: true})
   .then(function () {
     app.listen(port);
     app.on('error', listeners.onError);
