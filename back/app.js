@@ -58,7 +58,7 @@ passport.use(new GitHubStrategy({
     })
       .then(function (user) {
         console.log('here 1');
-        cb(null, user);
+        cb(null, profile);
         // return new Promise(function (resolve) {
         //   cb(user);
         //   resolve();
