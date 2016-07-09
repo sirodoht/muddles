@@ -58,7 +58,8 @@ passport.use(new GitHubStrategy({
       .then(function (err, user) {
         console.log('err', err);
         console.log('user', user);
-        return cb(err, user);
+        // return cb(err, user);
+        return cb(user, err);
       });
   }
 ));
