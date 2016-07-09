@@ -3,10 +3,7 @@ extends layout
 block content
   .container
     .row
-      .col-md-12
-        .jumbotron
-          h1 #{title}
-          p.lead Things that suck.
+      .col-md-6.col-md-offset-3
         .new
           form(method="POST", action="/new")
             .form-group
@@ -14,11 +11,54 @@ block content
               input#title.form-control(type="text", name="title")
             .form-group
               label(for="symptoms") Symptoms
-              input#symptoms.form-control(type="text", name="symptoms")
+              textarea#symptoms.form-control(rows="1", name="symptoms")
             .form-group
               label(for="hotfix") Hotfix
-              input#hotfix.form-control(type="text", name="hotfix")
+              textarea#hotfix.form-control(rows="1", name="hotfix")
             .form-group
               label(for="description") Description
-              input#description.form-control(type="text", name="description")
-            button.btn.btn-default(type="submit") Submit
+              textarea#description.form-control(rows="2", name="description")
+            .btn-center-wrapper
+              button.btn.btn-default(type="submit") Submit
+
+  script(type="application/javascript").
+    var observe;
+    if (window.attachEvent) {
+      observe = function (element, event, handler) {
+        element.attachEvent('on' + event, handler);
+      };
+    }
+    else {
+      observe = function (element, event, handler) {
+        element.addEventListener(event, handler, false);
+      };
+    }
+    function forEach(array, callback, scope) {
+      for (var i = 0; i < array.length; i++) {
+        callback.call(scope, array[i]);
+      }
+    };
+    function init() {
+      var textareaElms = document.getElementsByTagName('textarea');
+      forEach(textareaElms, function (elm) {
+        function resize() {
+          elm.style.height = 'auto';
+          elm.style.height = (elm.scrollHeight + 3) +'px';
+        }
+        /* 0-timeout to get the already changed text */
+        function delayedResize() {
+          window.setTimeout(resize, 0);
+        }
+        observe(elm, 'change', resize);
+        observe(elm, 'cut', delayedResize);
+        observe(elm, 'paste', delayedResize);
+        observe(elm, 'drop', delayedResize);
+        observe(elm, 'keydown', delayedResize);
+
+        elm.focus();
+        elm.select();
+        resize();
+      });
+
+    }
+    init();
