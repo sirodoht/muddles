@@ -7,6 +7,7 @@ module.exports = function (sequelize, DataTypes) {
         isEmail: true,
       },
     },
+    avatar: DataTypes.STRING,
 
     lastLogin: DataTypes.DATE,
     lastIp: {
