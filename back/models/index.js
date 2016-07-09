@@ -11,9 +11,11 @@ const sequelize = new Sequelize(configPostgres.url);
 // });
 
 const user = sequelize.import(path.join(__dirname, 'user.model.js'));
+const failure = sequelize.import(path.join(__dirname, 'failure.model.js'));
 
 const db = {
   User: user,
+  Failure: failure,
   sequelize,
   Sequelize,
 };
