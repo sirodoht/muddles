@@ -56,6 +56,8 @@ passport.use(new GitHubStrategy({
       where: { githubId: profile.id },
     })
       .then(function (err, user) {
+        console.log('err', err);
+        console.log('user', user);
         return cb(err, user);
       });
   }
