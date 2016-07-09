@@ -54,20 +54,19 @@ passport.use(new GitHubStrategy({
     models.User.findOrCreate({
       where: { githubId: profile.id },
     })
-      .then(function (user) {
-        cb(null, profile);
-        return user;
-      })
       .then(function () {
-        return models.User.update({
-          where: { githubId: profile.id },
-        }, {
-          avatar: profile.avatar_url,
-        });
-      })
-      .then(function (user) {
-        console.log('user:', user);
+        cb(null, profile);
       });
+      // .then(function () {
+      //   return models.User.update({
+      //     where: { githubId: profile.id },
+      //   }, {
+      //     avatar: profile.avatar_url,
+      //   });
+      // })
+      // .then(function (user) {
+      //   console.log('user:', user);
+      // });
   }
 ));
 
