@@ -22,9 +22,6 @@ build/Release
 # npm dependencies
 node_modules
 
-# Bower dependencies
-front/static/bower_components
-
 # Static files
 front/static/script.js
 front/static/style.css
