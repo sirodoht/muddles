@@ -1,6 +1,6 @@
 {
-  "name": "aspen",
-  "version": "1.0.0",
+  "name": "muddles",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "start": "npm run watchify & npm run sasswatch & nodemon ./back/app.js",
@@ -17,7 +17,6 @@
     "npm": ">=3.3.x"
   },
   "dependencies": {
-    "bcrypt": "0.8.7",
     "bluebird": "3.4.1",
     "body-parser": "1.15.2",
     "browserify": "13.0.1",
@@ -38,10 +37,17 @@
     "serve-favicon": "2.3.0"
   },
   "devDependencies": {
+    "ava": "0.15.2",
     "chai": "3.5.0",
     "eslint": "3.0.0",
-    "mocha": "2.5.3",
     "nodemon": "1.9.2",
     "request": "2.72.0"
+  },
+  "ava": {
+    "files": [
+      "test/*.js"
+    ],
+    "concurrency": 5,
+    "failFast": true
   }
 }
