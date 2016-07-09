@@ -1,8 +1,3 @@
-const Promise = require('bluebird');
-const Sequelize = require('sequelize');
-
-Promise.promisifyAll(require('bcrypt'));
-
 module.exports = function (sequelize, DataTypes) {
   const attributes = {
     githubId: DataTypes.STRING,
@@ -13,9 +8,9 @@ module.exports = function (sequelize, DataTypes) {
       },
     },
 
-    lastLogin: Sequelize.DATE,
+    lastLogin: DataTypes.DATE,
     lastIp: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
       validate: {
         isIP: true,
       },
@@ -25,7 +20,7 @@ module.exports = function (sequelize, DataTypes) {
   const options = {};
   options.classMethods = {
     associate: function (models) {
-      User.hasMany(models.Fail);
+      User.hasMany(models.Failure);
     }
   };
 
