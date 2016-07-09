@@ -2,6 +2,7 @@ const os = require('os');
 const path = require('path');
 const express = require('express');
 const logger = require('morgan');
+const Promise = require('bluebird');
 const favicon = require('serve-favicon');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
@@ -56,7 +57,11 @@ passport.use(new GitHubStrategy({
       where: { githubId: profile.id },
     })
       .then(function (user) {
-        return cb(user);
+        console.log('here 1');
+        return new Promise(function (resolve) {
+          cb(user);
+          resolve();
+        });
       });
   }
 ));
