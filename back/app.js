@@ -71,10 +71,10 @@ passport.serializeUser(function (user, done) {
   done(null, user.username);
 });
 
-passport.deserializeUser(function (username, done) {
+passport.deserializeUser(function (github, done) {
   models.User.findOne({
     where: {
-      username
+      github
     }
   }).then(function (user) {
     done(null, user);
