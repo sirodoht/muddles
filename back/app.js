@@ -53,30 +53,28 @@ passport.use(new GitHubStrategy({
   function(accessToken, refreshToken, profile, cb) {
     console.log('profile.id', profile.id);
     console.log('profile', profile);
-    cb(null, profile);
-    // models.User.findOrCreate({
-    //   where: { githubId: profile.id },
-    // })
-    //   .then(function (user) {
-    //     console.log('here 1');
-    //     return new Promise(function (resolve) {
-    //       cb(user);
-    //       resolve();
-    //     });
-    //   });
+    models.User.findOrCreate({
+      where: { githubId: profile.id },
+    })
+      .then(function (user) {
+        console.log('here 1');
+        cb(null, user);
+        // return new Promise(function (resolve) {
+        //   cb(user);
+        //   resolve();
+        // });
+      });
   }
 ));
 
 passport.serializeUser(function (user, done) {
-  console.log('ser: user', user);
   done(null, user.username);
 });
 
-passport.deserializeUser(function (githubId, done) {
-  console.log('de-ser: githubId', githubId);
+passport.deserializeUser(function (username, done) {
   models.User.findOne({
     where: {
-      githubId
+      username
     }
   }).then(function (user) {
     done(null, user);
