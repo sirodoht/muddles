@@ -50,14 +50,14 @@ passport.use(new GitHubStrategy({
   callbackURL: 'http://muddles.nepenth.xyz/auth/github/callback',
 },
   function(accessToken, refreshToken, profile, cb) {
-    console.log('accessToken:', accessToken);
-    console.log('refreshToken:', refreshToken);
-    console.log('profile:', profile);
     models.User.findOrCreate({
       where: {
         githubId: profile.id,
+        accessToken,
+        refreshToken,
         username: profile.username,
-        avatar: profile.avatar_url,
+        avatar: profile._json.avatar_url,
+        profile: profile.profileUrl,
       },
     })
       .then(function () {
