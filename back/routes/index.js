@@ -19,7 +19,6 @@ router.get('/auth/github/callback',
     console.log('req.isAuthenticated:', req.isAuthenticated);
     console.log('req.isAuthenticated():', req.isAuthenticated());
     console.log('req.session:', req.session);
-    req.login();
     res.redirect('/');
   });
 
