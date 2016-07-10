@@ -10,7 +10,9 @@ failureCtrl.new = function (req, res) {
 };
 
 failureCtrl.list = function (req, res) {
-  models.Failure.findAll()
+  models.Failure.findAll({
+    order: [['createdAt', 'DESC']]
+  })
     .then(function (failures) {
       res.render('failures', {
         brand: 'Muddles',
