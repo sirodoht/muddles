@@ -16,7 +16,7 @@ muddleCtrl.list = function (req, res) {
     .then(function (muddles) {
       res.render('muddles', {
         title: 'readAll',
-        subtitle: 'The list of the things that suck.',
+        subtitle: 'The list of the things that we messed up.',
         muddles,
       });
     });
