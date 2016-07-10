@@ -25,7 +25,7 @@ module.exports = function (sequelize, DataTypes) {
   const options = {};
   options.classMethods = {
     associate: function (models) {
-      User.hasMany(models.Failure);
+      User.hasMany(models.Muddle);
     }
   };
 

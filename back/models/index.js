@@ -5,17 +5,13 @@ const Sequelize = require('sequelize');
 
 const configPostgres = config.get('postgres');
 const sequelize = new Sequelize(configPostgres.url);
-// const sequelize = new Sequelize(configPostgres.database, configPostgres.uername, configPostgres.password, {
-//   host: configPostgres.host,
-//   dialect: 'postgres',
-// });
 
 const User = sequelize.import(path.join(__dirname, 'user.model.js'));
-const Failure = sequelize.import(path.join(__dirname, 'failure.model.js'));
+const Muddle = sequelize.import(path.join(__dirname, 'muddle.model.js'));
 
 const db = {
   User,
-  Failure,
+  Muddle,
   sequelize,
   Sequelize,
 };

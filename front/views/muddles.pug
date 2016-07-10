@@ -6,10 +6,10 @@ block content
       .col-md-12
         .list
           ul
-            each failure in failures
+            each muddle in muddles
               li
-                a(href="/readOne/" + failure.id)
-                  .title= failure.title
-                .symptom= failure.symptoms
+                a(href="/readOne/" + muddle.id)
+                  .title= muddle.title
+                .symptom= muddle.symptoms
                 .author.text-right by
                   span &nbsp;sirodoht

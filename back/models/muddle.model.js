@@ -6,7 +6,7 @@ module.exports = function (sequelize, DataTypes) {
     description: DataTypes.TEXT,
   };
 
-  const Failure = sequelize.define('Failure', attributes);
+  const Muddle = sequelize.define('Muddle', attributes);
 
-  return Failure;
+  return Muddle;
 };
