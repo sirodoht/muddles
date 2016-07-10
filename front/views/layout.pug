@@ -19,11 +19,30 @@ html
               a.navbar-brand(href="/") Muddles
           .navbar-collapse.collapse
             ul.nav.navbar-nav.navbar-right
-              if auth
+              if true
                 li
-                  a(href=profile)= profile
-                  li
-                    a(href="/logout") Log out
+                  a(href=profile)
+                    img.avatar(src=avatar, alt=username)
+                    | &nbsp;#{username}
+                li
+                  a(href="/logout") Log out
+                //- li.dropdown
+                  a.dropdown-toggle(href="#", data-toggle="dropdown", role="button", aria-haspopup="true", aria-expanded="false")
+                    | Dropdown
+                    span.caret
+                  ul.dropdown-menu
+                   li
+                    a(href="#") Action
+                   li
+                    a(href="#") Another action
+                   li
+                    a(href="#") Something else here
+                   li.divider(role="separator")
+                   li
+                    a(href="#") Separated link
+                   li.divider(role="separator")
+                   li
+                    a(href="#") One more separated link
               else
                 li
                   a(href="/auth/github") GitHub Login
