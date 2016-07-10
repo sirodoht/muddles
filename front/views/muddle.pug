@@ -14,5 +14,9 @@ block content
         .title Description
         .body= muddle.description
         .empty-space
-        .author.text-right by
-          span &nbsp;sirodoht
+        if anon
+          .author.text-right by
+            span &nbsp;anonymous
+        else
+          .author.text-right by
+            a(href=authorLink)= author
