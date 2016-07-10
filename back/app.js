@@ -87,24 +87,24 @@ passport.deserializeUser(function (githubId, done) {
 
 app.use(express.static(path.join(__dirname, '../front/static')));
 
-app.use(function (req, res, next) {
-  console.log('req.user', req.user);
-  if (req.isAuthenticated()) {
-    return models.User.findOne({
-      where: {
-        githubId: req.user.id,
-      }
-    })
-      .then(function (user) {
-        res.locals.auth = true;
-        res.locals.avatar = user.avatar;
-        res.locals.profile = user.profile;
-        next();
-      });
-  } else {
-    next();
-  }
-});
+// app.use(function (req, res, next) {
+//   console.log('req.user', req.user);
+//   if (req.isAuthenticated()) {
+//     return models.User.findOne({
+//       where: {
+//         githubId: req.user.id,
+//       }
+//     })
+//       .then(function (user) {
+//         res.locals.auth = true;
+//         res.locals.avatar = user.avatar;
+//         res.locals.profile = user.profile;
+//         next();
+//       });
+//   } else {
+//     next();
+//   }
+// });
 
 app.use('/', routes);
 
@@ -138,6 +138,7 @@ app.use(function (err, req, res) {
 const port = helpers.normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
+// models.sequelize.sync()
 models.sequelize.sync({force: true})
   .then(function () {
     app.listen(port);
