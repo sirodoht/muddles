@@ -14,11 +14,17 @@ muddleCtrl.list = function (req, res) {
     order: [['createdAt', 'DESC']]
   })
     .then(function (muddles) {
-      res.render('muddles', {
+      console.log('muddles:', muddles);
+      Object.assign(res.locals, {
         title: 'readAll',
         subtitle: 'The list of the things that we messed up.',
         muddles,
       });
+      return muddles.getUsers();
+    })
+    .then(function (users) {
+      console.log('users', users);
+      res.render('muddles');
     });
 };
 
