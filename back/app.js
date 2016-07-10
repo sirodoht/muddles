@@ -63,16 +63,6 @@ passport.use(new GitHubStrategy({
       .then(function () {
         cb(null, profile);
       });
-      // .then(function () {
-      //   return models.User.update({
-      //     where: { githubId: profile.id },
-      //   }, {
-      //     avatar: profile.avatar_url,
-      //   });
-      // })
-      // .then(function (user) {
-      //   console.log('user:', user);
-      // });
   }
 ));
 
@@ -91,6 +81,12 @@ passport.deserializeUser(function (githubId, done) {
 });
 
 app.use(express.static(path.join(__dirname, '../front/static')));
+
+app.use(function (req, res, next) {
+  console.log('req.user:', req.user);
+  next();
+
+});
 
 app.use('/', routes);
 
