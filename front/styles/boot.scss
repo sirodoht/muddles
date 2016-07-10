@@ -93,6 +93,19 @@
   }
 }
 
+.single {
+  .title {
+    margin-top: 40px;
+    font-family: 'Roboto Slab', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+  }
+
+  .empty-space {
+    height: 53px;
+  }
+}
+
 footer {
   height: 100px;
 }
