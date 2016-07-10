@@ -18,10 +18,14 @@ html
             a.navbar-brand(href="/")= brand
           .navbar-collapse.collapse
             ul.nav.navbar-nav.navbar-right
-              li
-                a(href="/auth/github") GitHub Login
-              li
-                a(href="/logout") Log out
+              if auth
+                li
+                  a(href="/auth/github") GitHub Login
+              else
+                li
+                  a(href=profile)= profile
+                li
+                  a(href="/logout") Log out
 
       .container
         h1= title
