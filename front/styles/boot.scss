@@ -1,5 +1,14 @@
 @import "navbar";
 
+a {
+  color: #EC6F66;
+
+  &:hover,
+  &:focus {
+    color: #E95A4F;
+  }
+}
+
 .jumbotron {
   padding-top: 0;
   // background: #dadada;
