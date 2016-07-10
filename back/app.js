@@ -88,10 +88,7 @@ passport.deserializeUser(function (githubId, done) {
 app.use(express.static(path.join(__dirname, '../front/static')));
 
 app.use(function (req, res, next) {
-  console.log('req.user:', req.user);
-  console.log('req.isAuthenticated:', req.isAuthenticated);
   console.log('req.isAuthenticated():', req.isAuthenticated());
-  console.log('req.session:', req.session);
   next();
 
 });
