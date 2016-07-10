@@ -20,7 +20,7 @@ muddleCtrl.list = function (req, res) {
         subtitle: 'The list of the things that we messed up.',
         muddles,
       });
-      return muddles.getUsers();
+      return muddles.getUser();
     })
     .then(function (users) {
       console.log('users', users);
