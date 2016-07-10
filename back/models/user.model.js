@@ -1,6 +1,9 @@
 module.exports = function (sequelize, DataTypes) {
   const attributes = {
     githubId: DataTypes.STRING,
+    username: DataTypes.STRING,
+    accessToken: DataTypes.STRING,
+    refreshToken: DataTypes.STRING,
     email: {
       type: DataTypes.STRING,
       validate: {
