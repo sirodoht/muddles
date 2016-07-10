@@ -20,12 +20,12 @@ html
             ul.nav.navbar-nav.navbar-right
               if auth
                 li
-                  a(href="/auth/github") GitHub Login
+                  a(href=profile)= profile
+                  li
+                    a(href="/logout") Log out
               else
                 li
-                  a(href=profile)= profile
-                li
-                  a(href="/logout") Log out
+                  a(href="/auth/github") GitHub Login
 
       .container
         h1= title
