@@ -15,7 +15,8 @@ html
               span.icon-bar
               span.icon-bar
               span.icon-bar
-            a.navbar-brand(href="/")= brand
+            unless noNavbarBrand
+              a.navbar-brand(href="/") Muddles
           .navbar-collapse.collapse
             ul.nav.navbar-nav.navbar-right
               if auth

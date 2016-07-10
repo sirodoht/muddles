@@ -15,7 +15,6 @@ failureCtrl.list = function (req, res) {
   })
     .then(function (failures) {
       res.render('failures', {
-        brand: 'Muddles',
         title: 'readAll',
         subtitle: 'The list of the things that suck.',
         failures,
@@ -29,7 +28,6 @@ failureCtrl.read = function (req, res) {
   })
     .then(function (failure) {
       res.render('failure', {
-        brand: 'Muddles',
         title: 'readOne',
         subtitle: 'The one of the things that suck.',
         failure,
