@@ -1,6 +1,6 @@
 module.exports = function (sequelize, DataTypes) {
   const attributes = {
-    githubId: DataTypes.STRING,
+    githubId: DataTypes.INTEGER,
     username: DataTypes.STRING,
     profile: DataTypes.STRING,
     accessToken: DataTypes.STRING,
