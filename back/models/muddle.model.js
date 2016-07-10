@@ -6,7 +6,14 @@ module.exports = function (sequelize, DataTypes) {
     description: DataTypes.TEXT,
   };
 
-  const Muddle = sequelize.define('Muddle', attributes);
+  const options = {};
+  options.classMethods = {
+    associate: function (models) {
+      models.Muddle.belongsTo(models.User);
+    }
+  };
+
+  const Muddle = sequelize.define('Muddle', attributes, options);
 
   return Muddle;
 };
