@@ -55,7 +55,7 @@ passport.use(new GitHubStrategy({
   callbackURL: 'http://muddles.nepenth.xyz/auth/github/callback',
 },
   function(accessToken, refreshToken, profile, cb) {
-    models.User.findOrCreate({
+    return models.User.findOrCreate({
       where: {
         githubId: profile.id,
         accessToken,
@@ -76,7 +76,7 @@ passport.serializeUser(function (user, done) {
 });
 
 passport.deserializeUser(function (githubId, done) {
-  models.User.findOne({
+  return models.User.findOne({
     where: {
       githubId
     }
