@@ -37,7 +37,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(session({
-  secret: 'keyboard cat',
+  secret: 'keyboard anathema',
   resave: true,
   saveUninitialized: true,
   store: new SequelizeStore({
