@@ -1,11 +1,12 @@
 const os = require('os');
 const path = require('path');
 const express = require('express');
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const logger = require('morgan');
 const favicon = require('serve-favicon');
-const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
-const session = require('express-session');
 const passport = require('passport');
 const GitHubStrategy = require('passport-github').Strategy;
 
@@ -30,15 +31,19 @@ app.use(favicon(path.join(__dirname, '../front/static', 'favicon.ico')));
 
 app.use(logger('dev'));
 
+app.use(cookieParser());
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-
-app.use(cookieParser());
 
 app.use(session({
   secret: 'keyboard cat',
   resave: false,
   saveUninitialized: false,
+  store: new SequelizeStore({
+    db: models.sequelize,
+  }),
+
 }));
 
 app.use(passport.initialize());
