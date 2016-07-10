@@ -1,9 +1,9 @@
 module.exports = function (sequelize, DataTypes) {
   const attributes = {
     title: DataTypes.STRING,
-    symptoms: DataTypes.STRING,
-    hotfix: DataTypes.STRING,
-    description: DataTypes.STRING,
+    symptoms: DataTypes.TEXT,
+    hotfix: DataTypes.TEXT,
+    description: DataTypes.TEXT,
   };
 
   const Failure = sequelize.define('Failure', attributes);
