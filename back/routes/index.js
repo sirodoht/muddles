@@ -4,10 +4,9 @@ const passport = require('passport');
 
 const indexCtrl = require('../controllers/index.ctrl');
 const userCtrl = require('../controllers/user.ctrl');
-const failureCtrl = require('../controllers/failure.ctrl');
+const muddleCtrl = require('../controllers/muddle.ctrl');
 
 router.get('/', indexCtrl.getIndex);
-router.get('/login', userCtrl.getLogin);
 
 router.get('/auth/github', passport.authenticate('github'));
 
@@ -18,16 +17,11 @@ router.get('/auth/github/callback',
     res.redirect('/');
   });
 
-router.post('/register', userCtrl.register);
-router.post('/login', userCtrl.login);
+router.get('/logout', userCtrl.logout);
 
-router.post('/new', failureCtrl.new);
+router.post('/muddle', muddleCtrl.create);
 
-router.get('/readAll', failureCtrl.list);
-router.get('/readOne/:failureId', failureCtrl.read);
-
-router.get('/register', userCtrl.getRegister);
-
-router.get('/:user', userCtrl.getUser);
+router.get('/readAll', muddleCtrl.list);
+router.get('/readOne/:muddleId', muddleCtrl.read);
 
 module.exports = router;
