@@ -1,25 +1,13 @@
 module.exports = function (sequelize, DataTypes) {
   const attributes = {
     githubId: DataTypes.INTEGER,
-    username: DataTypes.STRING,
-    profile: DataTypes.STRING,
+
     accessToken: DataTypes.STRING,
     refreshToken: DataTypes.STRING,
-    email: {
-      type: DataTypes.STRING,
-      validate: {
-        isEmail: true,
-      },
-    },
-    avatar: DataTypes.STRING,
 
-    lastLogin: DataTypes.DATE,
-    lastIp: {
-      type: DataTypes.STRING,
-      validate: {
-        isIP: true,
-      },
-    },
+    username: DataTypes.STRING,
+    profile: DataTypes.STRING,
+    avatar: DataTypes.STRING,
   };
 
   const options = {};
