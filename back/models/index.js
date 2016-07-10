@@ -10,12 +10,12 @@ const sequelize = new Sequelize(configPostgres.url);
 //   dialect: 'postgres',
 // });
 
-const user = sequelize.import(path.join(__dirname, 'user.model.js'));
-const failure = sequelize.import(path.join(__dirname, 'failure.model.js'));
+const User = sequelize.import(path.join(__dirname, 'user.model.js'));
+const Failure = sequelize.import(path.join(__dirname, 'failure.model.js'));
 
 const db = {
-  User: user,
-  Failure: failure,
+  User,
+  Failure,
   sequelize,
   Sequelize,
 };
