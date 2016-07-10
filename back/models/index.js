@@ -16,4 +16,7 @@ const db = {
   Sequelize,
 };
 
+User.hasMany(Muddle);
+Muddle.belongsTo(User);
+
 module.exports = db;
