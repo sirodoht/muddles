@@ -27,10 +27,24 @@ muddleCtrl.read = function (req, res) {
     where: { id: req.params.muddleId }
   })
     .then(function (muddle) {
-      res.render('muddle', {
+      Object.assign(res.locals, {
         title: 'readOne',
-        subtitle: 'The one of the things that suck.',
+        subtitle: 'The one of the things that we messed up.',
         muddle,
       });
+      return muddle.getUser();
+    })
+    .then(function (user) {
+      if (user) {
+        Object.assign(res.locals, {
+          author: user.username,
+          authorLink: user.profile,
+        });
+      } else {
+        Object.assign(res.locals, {
+          anon: true,
+        });
+      }
+      res.render('muddle');
     });
 };
