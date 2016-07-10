@@ -38,8 +38,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(session({
   secret: 'keyboard anathema',
-  resave: true,
-  saveUninitialized: true,
+  resave: false,
+  saveUninitialized: false,
   store: new SequelizeStore({
     db: models.sequelize,
   }),
