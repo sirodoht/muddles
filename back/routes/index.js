@@ -17,6 +17,8 @@ router.get('/auth/github/callback',
     // Successful authentication, redirect home.
     console.log('req.isAuthenticated():', req.isAuthenticated());
     console.log('req.session.save:', req.session.save);
+    req.session.save();
+    req.session.user = req.user;
     res.redirect('/');
   });
 
