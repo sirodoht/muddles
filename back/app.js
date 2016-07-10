@@ -92,7 +92,7 @@ app.use(function (req, res, next) {
   if (req.isAuthenticated()) {
     return models.User.findOne({
       where: {
-        githubId: req.user.id,
+        id: req.user.id,
       }
     })
       .then(function (user) {
