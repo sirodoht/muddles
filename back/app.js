@@ -88,9 +88,22 @@ passport.deserializeUser(function (githubId, done) {
 app.use(express.static(path.join(__dirname, '../front/static')));
 
 app.use(function (req, res, next) {
-  console.log('req.isAuthenticated():', req.isAuthenticated());
-  next();
-
+  console.log('req.user', req.user);
+  if (req.isAuthenticated()) {
+    return models.User.findOne({
+      where: {
+        githubId: req.user.id,
+      }
+    })
+      .then(function (user) {
+        res.locals.auth = true;
+        res.locals.avatar = user.avatar;
+        res.locals.profile = user.profile;
+        next();
+      });
+  } else {
+    next();
+  }
 });
 
 app.use('/', routes);
