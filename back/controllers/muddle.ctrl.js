@@ -3,8 +3,20 @@ const models = require('../models');
 const muddleCtrl = module.exports = {};
 
 muddleCtrl.create = function (req, res) {
+  var newMuddle = null;
   models.Muddle.create(req.body)
-    .then(function () {
+    .then(function (muddle) {
+      if (req.user) {
+        newMuddle = muddle;
+        return models.User.findOne({
+          where: { id: req.user.id }
+        });
+      } else {
+        res.redirect('/readAll');
+      }
+    })
+    .then(function (user) {
+      newMuddle.addUser(user);
       res.redirect('/readAll');
     });
 };
