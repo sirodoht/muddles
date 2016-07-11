@@ -37,8 +37,9 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+const configSession = config.get('session');
 app.use(session({
-  secret: 'keyboard anathema',
+  secret: configSession.secret,
   resave: false,
   saveUninitialized: false,
   store: new SequelizeStore({
