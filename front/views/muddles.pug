@@ -11,5 +11,9 @@ block content
                 a(href="/readOne/" + muddle.id)
                   .title= muddle.title
                 .symptom= muddle.symptoms
-                .author.text-right by
-                  span &nbsp;sirodoht
+                if muddle.anon
+                  .author.text-right by
+                    span &nbsp;anonymous
+                else
+                  .author.text-right by&nbsp;
+                    a(href=muddle.authorLink)= muddle.author
