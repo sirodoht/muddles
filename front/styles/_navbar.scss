@@ -3,6 +3,11 @@ $bgHighlight: transparent;
 $colDefault: #ffffff;
 $colHighlight: #F3A183;
 $dropDown: true;
+
+.navbar {
+  margin-bottom: 60px;
+}
+
 .navbar-default {
   background-color: $bgDefault;
   border-color: $bgHighlight;
@@ -10,7 +15,7 @@ $dropDown: true;
     color: $colDefault;
     &:focus,
     &:hover {
-      color: $colHighlight;
+      color: $colDefault;
     }
   }
   .navbar-text {
@@ -22,7 +27,7 @@ $dropDown: true;
         color: $colDefault;
         &:focus,
         &:hover {
-          color: $colHighlight;
+          color: $colDefault;
         }
       }
       @if $dropDown {
