@@ -1,5 +1,13 @@
 @import "navbar";
 
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  margin-bottom: 80px;
+}
+
 a {
   color: #EC6F66;
 
@@ -16,10 +24,6 @@ a {
   // background: linear-gradient(to left, #50C9C3, #96DEDA);
   // background: linear-gradient(to left, #FF512F, #DD2476);
   background: linear-gradient(to left, #F3A183, #EC6F66);
-}
-
-.navbar {
-  margin-bottom: 60px;
 }
 
 .avatar {
@@ -123,4 +127,21 @@ a {
 
 footer {
   height: 100px;
+  color: #bbb;
+
+  a {
+    color: #bbb;
+    &:hover,
+    &:focus {
+      text-decoration: none;
+    }
+  }
+}
+
+.sticky {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 30px;
+  // background-color: #f5f5f5;
 }
