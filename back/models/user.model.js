@@ -11,11 +11,11 @@ module.exports = function (sequelize, DataTypes) {
   };
 
   const options = {};
-  options.classMethods = {
-    associate: function (models) {
-      User.hasMany(models.Muddle);
-    }
-  };
+  // options.classMethods = {
+  //   associate: function (models) {
+  //     User.hasMany(models.Muddle);
+  //   }
+  // };
 
   const User = sequelize.define('User', attributes, options);
 

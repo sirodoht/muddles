@@ -7,11 +7,11 @@ module.exports = function (sequelize, DataTypes) {
   };
 
   const options = {};
-  options.classMethods = {
-    associate: function (models) {
-      models.Muddle.belongsTo(models.User);
-    }
-  };
+  // options.classMethods = {
+  //   associate: function (models) {
+  //     models.Muddle.belongsTo(models.User);
+  //   }
+  // };
 
   const Muddle = sequelize.define('Muddle', attributes, options);
 
