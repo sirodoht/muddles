@@ -1,10 +1,13 @@
 doctype html
 html
   head
-    title= title
+    meta(charset="utf-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
     link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous")
     link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,700")
     link(rel="stylesheet", href="/style.css")
+    title= title
   body
     .jumbotron
       nav.navbar.navbar-default
@@ -17,7 +20,7 @@ html
               span.icon-bar
             unless noNavbarBrand
               a.navbar-brand(href="/") Muddles
-          .navbar-collapse.collapse
+          #navbar.navbar-collapse.collapse
             ul.nav.navbar-nav.navbar-right
               if auth
                 li
@@ -52,4 +55,6 @@ html
         p.lead= subtitle
     block content
     footer
+      script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js")
+      script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js")
       script(type="application/javascript", src="/script.js")
