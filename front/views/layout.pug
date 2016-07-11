@@ -54,7 +54,17 @@ html
         h1= title
         p.lead= subtitle
     block content
-    footer
+    footer.sticky
+      .container
+        .row
+          .col-md-6
+            p
+              a(href="https://github.com/sirodoht/muddles") Source Code
+          .col-md-6
+            p.text-right
+              | ©&nbsp;
+              a(href="https://github.com/sirodoht/muddles/blob/master/LICENSE") MIT
+
       script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js")
       script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js")
       script(type="application/javascript", src="/script.js")
