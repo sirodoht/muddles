@@ -2,8 +2,7 @@ const indexCtrl = module.exports = {};
 
 indexCtrl.getIndex = function (req, res) {
   res.render('index', {
-    noNavbarBrand: true,
+    frontpage: true,
     title: 'Muddles.',
-    subtitle: 'Things that we messed up.'
   });
 };

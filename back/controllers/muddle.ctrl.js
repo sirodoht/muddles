@@ -47,7 +47,7 @@ muddleCtrl.list = function (req, res) {
       console.log(muddles);
       res.render('muddles', {
         title: 'readAll',
-        subtitle: 'The list of the things that we messed up.',
+        subtitle: 'List of things that got muddled.',
         muddles,
       });
     });
@@ -68,7 +68,7 @@ muddleCtrl.read = function (req, res) {
       };
       Object.assign(res.locals, {
         title: 'readOne',
-        subtitle: 'The one of the things that we messed up.',
+        subtitle: 'One of the things that got muddled.',
         muddle: rawMuddle,
       });
       return muddle.getUser();
