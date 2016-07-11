@@ -28,3 +28,7 @@ front/static/style.css
 
 # nvm
 .nvmrc
+
+# Deploy
+deploy.sh
+config/production.json
