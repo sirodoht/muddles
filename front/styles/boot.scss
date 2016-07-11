@@ -31,6 +31,20 @@ a {
   border-radius: 50%;
 }
 
+.dictionary {
+  font-size: 15px;
+  margin-bottom: 15px;
+
+  .details {
+    padding-left: 15px;
+  }
+
+  .phonetic {
+    font-size: 18px;
+  }
+}
+
+
 .btn-center-wrapper {
   display: flex;
   justify-content: center;
