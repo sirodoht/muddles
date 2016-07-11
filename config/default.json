@@ -1,5 +1,5 @@
 {
   "postgres":{
-    "url": "postgres://sirodoht@127.0.0.1:5432/muddles",
+    "url": "postgres://sirodoht@127.0.0.1:5432/muddles"
   }
 }
