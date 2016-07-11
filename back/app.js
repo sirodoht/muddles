@@ -1,5 +1,6 @@
 const os = require('os');
 const path = require('path');
+const config = require('config');
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
@@ -49,9 +50,10 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+const configGithub = config.get('github');
 passport.use(new GitHubStrategy({
-  clientID: 'd87530f855c18573e868',
-  clientSecret: '16136b982bbd0d619d906ee23b8c81e516f093ad',
+  clientID: configGithub.clientId,
+  clientSecret: configGithub.clientSecret,
   callbackURL: 'http://muddles.nepenth.xyz/auth/github/callback',
 },
   function(accessToken, refreshToken, profile, cb) {
