@@ -16,7 +16,7 @@ muddleCtrl.create = function (req, res) {
       }
     })
     .then(function (user) {
-      newMuddle.addUser(user);
+      user.addMuddle(newMuddle);
       res.redirect('/readAll');
     });
 };
