@@ -11,32 +11,53 @@ muddleCtrl.create = function (req, res) {
 
 muddleCtrl.list = function (req, res) {
   models.Muddle.findAll({
-    order: [['createdAt', 'DESC']]
+    attributes: ['id', 'title', 'symptoms'],
+    order: [['createdAt', 'DESC']],
+    include: [{
+      model: models.User,
+      attributes: ['username', 'profile'],
+    }],
+    raw: true,
   })
     .then(function (muddles) {
-      console.log('muddles:', muddles);
-      Object.assign(res.locals, {
+      muddles.forEach(function (m) {
+        if (m['User.username']) {
+          m.author = m['User.username'];
+          delete m['User.username'];
+          m.authorLink = m['User.profile'];
+          delete m['User.profile'];
+        } else {
+          delete m['User.username'];
+          delete m['User.profile'];
+          m.anon = true;
+        }
+      });
+      console.log(muddles);
+      res.render('muddles', {
         title: 'readAll',
         subtitle: 'The list of the things that we messed up.',
         muddles,
       });
-      return muddles.getUser();
-    })
-    .then(function (users) {
-      console.log('users', users);
-      res.render('muddles');
     });
 };
 
 muddleCtrl.read = function (req, res) {
   models.Muddle.findOne({
-    where: { id: req.params.muddleId }
+    where: {
+      id: req.params.muddleId,
+    },
   })
     .then(function (muddle) {
+      const rawMuddle = {
+        title: muddle.title,
+        symptoms: muddle.symptoms,
+        hotfix: muddle.hotfix,
+        description: muddle.description,
+      };
       Object.assign(res.locals, {
         title: 'readOne',
         subtitle: 'The one of the things that we messed up.',
-        muddle,
+        muddle: rawMuddle,
       });
       return muddle.getUser();
     })
