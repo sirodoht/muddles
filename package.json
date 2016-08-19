@@ -13,7 +13,7 @@
     "build": "npm run browserify && npm run sass"
   },
   "engines": {
-    "node": "6.3.1",
+    "node": "6.x",
     "npm": ">=3.3.x"
   },
   "dependencies": {
